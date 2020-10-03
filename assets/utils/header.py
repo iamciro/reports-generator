@@ -1,5 +1,4 @@
 from kivy.uix.boxlayout import BoxLayout
-from kivy.utils import get_color_from_hex
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.behaviors import (
     SpecificBackgroundColorBehavior,
@@ -125,7 +124,7 @@ class Header(
     and defaults to `'top'`.
     """
 
-    bg_color = get_color_from_hex('3AB054')
+    #bg_color = get_color_from_hex('3AB054')
 
     _shift = NumericProperty("3.5dp")
     _angle_start = NumericProperty(90)

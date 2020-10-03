@@ -1,5 +1,5 @@
 #:include assets/kv/components/header.kv
-#:import get_color_from_hex kivy.utils 
+#:import txt assets.utils.texts 
 
 <HomeScreen>:
 	BoxLayout:
@@ -9,11 +9,22 @@
 			orientation: "vertical"
 			title: 'Tecno Services'
 			anchor_title: 'center'
-			font_style: 'H1'
 			size_hint_y: .2
-			md_bg_color: self.bg_color
-		MDLabel:
-			text: "HOla mundo"
+			md_bg_color: txt.HEADER_BG_COLOR
+		FloatLayout:
+			orientation: 'vertical'
+			MDLabel:
+				text: "¡Bienvenido!"
+				font_style: 'H2'
+				halign: 'center'
+				pos_hint: {"x": 0, "center_y": .9}
+			MDRaisedButton:
+				text: "Generar informe"
+				halign: 'center'
+				size_hint: .3, .2
+				pos_hint: {"center_x": .5, "center_y": .5}
+				font_size: 30
+				md_bg_color: txt.BUTTON_BG_COLOR
 
 ScreenManager:
 	HomeScreen
