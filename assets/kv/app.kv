@@ -1,7 +1,17 @@
+#:include assets/kv/components/header.kv
+
 <HomeScreen>:
 	BoxLayout:
+		orientation: 'vertical'
+		Header:
+			id: toolbar
+			orientation: "vertical"
+			title: 'Tecno Services'
+			anchor_title: 'center'
+			font_style: 'H1'
+			size_hint_y: .2
 		MDLabel:
-			text: "Tecno Services"
+			text: "HOla mundo"
 
 ScreenManager:
 	HomeScreen
