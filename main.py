@@ -4,12 +4,14 @@ from kivy.lang import Builder
 
 from kivymd.app import MDApp
 
+from assets.utils import texts as txt
+
 class HomeScreen(Screen):
 	pass
 
 class MainApp(MDApp):
 	def build(self):
-		self.title = "Tecno Services | Generación de reportes"
+		self.title = txt.APP_TITLE
 		return Builder.load_file('assets/kv/app.kv')
 
 

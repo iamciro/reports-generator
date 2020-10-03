@@ -7,19 +7,19 @@
 		Header:
 			id: toolbar
 			orientation: "vertical"
-			title: 'Tecno Services'
+			title: txt.header['title']
 			anchor_title: 'center'
 			size_hint_y: .2
 			md_bg_color: txt.HEADER_BG_COLOR
 		FloatLayout:
 			orientation: 'vertical'
 			MDLabel:
-				text: "¡Bienvenido!"
+				text: txt.home_screen['welcome_text']
 				font_style: 'H2'
 				halign: 'center'
 				pos_hint: {"x": 0, "center_y": .9}
 			MDRaisedButton:
-				text: "Generar informe"
+				text:txt.home_screen['reportscreen_btn_text']
 				halign: 'center'
 				size_hint: .3, .2
 				pos_hint: {"center_x": .5, "center_y": .5}
