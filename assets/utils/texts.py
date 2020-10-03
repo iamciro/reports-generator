@@ -19,3 +19,8 @@ home_screen = {
 	"welcome_text": '¡Bienvenido!',
 	"reportscreen_btn_text": 'Generar reporte'
 }
+
+# ReportScreen TEXCS
+report_screen = {
+	"test_text": 'Mensaje de prueba'
+}

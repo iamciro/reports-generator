@@ -2,6 +2,7 @@
 #:import txt assets.utils.texts 
 
 <HomeScreen>:
+	name: 'home_screen'
 	BoxLayout:
 		orientation: 'vertical'
 		Header:
@@ -25,6 +26,22 @@
 				pos_hint: {"center_x": .5, "center_y": .5}
 				font_size: 30
 				md_bg_color: txt.BUTTON_BG_COLOR
+				on_release:
+					root.manager.transition.direction = 'left'   
+					root.manager.current = "report_screen"
 
+<ReportScreen>:
+	name: 'report_screen'
+	BoxLayout:
+		orientation: 'vertical'
+		Header:
+			id: toolbar
+			orientation: "vertical"
+			title: txt.header['title']
+			anchor_title: 'center'
+			size_hint_y: .2
+			md_bg_color: txt.HEADER_BG_COLOR
+			
 ScreenManager:
 	HomeScreen
+	ReportScreen
