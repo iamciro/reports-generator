@@ -2,8 +2,10 @@
 
 from kivy.utils import get_color_from_hex
 
+# APPLICATION TITLE
 APP_TITLE = 'Tecno Services | Generación de reportes'
 
+# HEADER BG COLORS CONSTANTS
 HEADER_BG_COLOR = get_color_from_hex('3AB054')
 BUTTON_BG_COLOR = get_color_from_hex('3AB054')
 

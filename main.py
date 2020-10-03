@@ -6,6 +6,9 @@ from kivymd.app import MDApp
 
 from assets.utils import texts as txt
 
+class ReportScreen(Screen):
+	pass
+
 class HomeScreen(Screen):
 	pass
 
