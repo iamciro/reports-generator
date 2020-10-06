@@ -1,80 +1,163 @@
 #:import Header assets.utils.header
 
 <Header>:
-    size_hint_y: None
-    height: root.theme_cls.standard_increment
-    padding: [root.theme_cls.horizontal_margins - dp(12), 0]
-    opposite_colors: True
-    elevation: 6
-    md_bg_color: self.theme_cls.primary_color if root.type != "bottom" else [0, 0, 0, 0]
+	size_hint_y: None
+	height: root.theme_cls.standard_increment
+	padding: [root.theme_cls.horizontal_margins - dp(12), 0]
+	opposite_colors: True
+	elevation: 6
+	md_bg_color: self.theme_cls.primary_color if root.type != "bottom" else [0, 0, 0, 0]
 
-    canvas:
-        Color:
-            rgba: root.theme_cls.primary_color
-        RoundedRectangle:
-            pos:
-                self.pos \
-                if root.mode == "center" else \
-                (self.width - root.action_button.width + dp(6), self.y)
-            size:
-                (((self.width - root.action_button.width) / 2 - dp(6), self.height) \
-                if root.mode == "center" else \
-                (root.action_button.width - dp(6), self.height)) if root.type == "bottom" else self.pos
-            radius:
-                (0, root.round, 0, 0) if root.mode == "center" else (root.round, 0, 0, 0)
-        Rectangle:
-            pos:
-                ((self.width / 2 - root.action_button.width / 2) - dp(6), self.y - root._shift) \
-                if root.mode == "center" else \
-                (self.width - root.action_button.width * 2 - dp(6), self.y - root._shift)
-            size:
-                (root.action_button.width + dp(6) * 2, self.height - root._shift * 2) \
-                if root.type == "bottom" else (0, 0)
-        RoundedRectangle:
-            pos:
-                ((self.width + root.action_button.width) / 2 + dp(6), self.y) \
-                if root.mode == "center" else self.pos
-            size:
-                (((self.width - root.action_button.width) / 2 + dp(6), self.height) \
-                if root.mode == "center" else \
-                ((self.width - root.action_button.width * 2 - dp(6)), self.height)) \
-                if root.type == "bottom" else (0, 0)
-            radius: (root.round, 0, 0, 0) if root.mode == "center" else (0, root.round, 0, 0)
-        Color:
-            rgba: 1, 1, 1, 1
-        Ellipse:
-            pos:
-                (self.center[0] - root.action_button.width / 2 - dp(6), self.center[1] - root._shift * 2) \
-                if root.mode == "center" else \
-                (self.width - root.action_button.width * 2 - dp(6), self.center[1] - root._shift * 2)
-            size:
-                (root.action_button.width + dp(6) * 2, root.action_button.width) \
-                if root.type == "bottom" else (0, 0)
-            angle_start: root._angle_start
-            angle_end: root._angle_end
+	canvas:
+		Color:
+			rgba: root.theme_cls.primary_color
+		RoundedRectangle:
+			pos:
+				self.pos \
+				if root.mode == "center" else \
+				(self.width - root.action_button.width + dp(6), self.y)
+			size:
+				(((self.width - root.action_button.width) / 2 - dp(6), self.height) \
+				if root.mode == "center" else \
+				(root.action_button.width - dp(6), self.height)) if root.type == "bottom" else self.pos
+			radius:
+				(0, root.round, 0, 0) if root.mode == "center" else (root.round, 0, 0, 0)
+		Rectangle:
+			pos:
+				((self.width / 2 - root.action_button.width / 2) - dp(6), self.y - root._shift) \
+				if root.mode == "center" else \
+				(self.width - root.action_button.width * 2 - dp(6), self.y - root._shift)
+			size:
+				(root.action_button.width + dp(6) * 2, self.height - root._shift * 2) \
+				if root.type == "bottom" else (0, 0)
+		RoundedRectangle:
+			pos:
+				((self.width + root.action_button.width) / 2 + dp(6), self.y) \
+				if root.mode == "center" else self.pos
+			size:
+				(((self.width - root.action_button.width) / 2 + dp(6), self.height) \
+				if root.mode == "center" else \
+				((self.width - root.action_button.width * 2 - dp(6)), self.height)) \
+				if root.type == "bottom" else (0, 0)
+			radius: (root.round, 0, 0, 0) if root.mode == "center" else (0, root.round, 0, 0)
+		Color:
+			rgba: 1, 1, 1, 1
+		Ellipse:
+			pos:
+				(self.center[0] - root.action_button.width / 2 - dp(6), self.center[1] - root._shift * 2) \
+				if root.mode == "center" else \
+				(self.width - root.action_button.width * 2 - dp(6), self.center[1] - root._shift * 2)
+			size:
+				(root.action_button.width + dp(6) * 2, root.action_button.width) \
+				if root.type == "bottom" else (0, 0)
+			angle_start: root._angle_start
+			angle_end: root._angle_end
 
-    BoxLayout:
-        id: left_actions
-        orientation: 'horizontal'
-        size_hint_x: None
-        padding: [0, (self.height - dp(48))/2]
+	BoxLayout:
+		id: left_actions
+		orientation: 'horizontal'
+		size_hint_x: None
+		padding: [0, (self.height - dp(48))/2]
 
-    BoxLayout:
-        padding: dp(12), 0
+	BoxLayout:
+		padding: dp(12), 0
 
-        MDLabel:
-            id: label_title
-            font_style: 'H3'
-            opposite_colors: root.opposite_colors
-            theme_text_color: 'Custom'
-            text_color: root.specific_text_color
-            text: root.title
-            shorten: True
-            shorten_from: 'right'
-            halign: root.anchor_title
+		MDLabel:
+			id: label_title
+			font_style: 'H3'
+			opposite_colors: root.opposite_colors
+			theme_text_color: 'Custom'
+			text_color: root.specific_text_color
+			text: root.title
+			shorten: True
+			shorten_from: 'right'
+			halign: root.anchor_title
 
-    BoxLayout:
-        id: right_actions
-        orientation: 'horizontal'
-        size_hint_x: None
-        padding: [0, (self.height - dp(48)) / 2]
+	BoxLayout:
+		id: right_actions
+		orientation: 'horizontal'
+		size_hint_x: None
+		padding: [0, (self.height - dp(48)) / 2]
+
+<HeaderWithIcon>:
+	size_hint_y: None
+	height: root.theme_cls.standard_increment
+	padding: [root.theme_cls.horizontal_margins - dp(12), 0]
+	opposite_colors: True
+	elevation: 6
+	md_bg_color: self.theme_cls.primary_color if root.type != "bottom" else [0, 0, 0, 0]
+
+	canvas:
+		Color:
+			rgba: root.theme_cls.primary_color
+		RoundedRectangle:
+			pos:
+				self.pos \
+				if root.mode == "center" else \
+				(self.width - root.action_button.width + dp(6), self.y)
+			size:
+				(((self.width - root.action_button.width) / 2 - dp(6), self.height) \
+				if root.mode == "center" else \
+				(root.action_button.width - dp(6), self.height)) if root.type == "bottom" else self.pos
+			radius:
+				(0, root.round, 0, 0) if root.mode == "center" else (root.round, 0, 0, 0)
+		Rectangle:
+			pos:
+				((self.width / 2 - root.action_button.width / 2) - dp(6), self.y - root._shift) \
+				if root.mode == "center" else \
+				(self.width - root.action_button.width * 2 - dp(6), self.y - root._shift)
+			size:
+				(root.action_button.width + dp(6) * 2, self.height - root._shift * 2) \
+				if root.type == "bottom" else (0, 0)
+		RoundedRectangle:
+			pos:
+				((self.width + root.action_button.width) / 2 + dp(6), self.y) \
+				if root.mode == "center" else self.pos
+			size:
+				(((self.width - root.action_button.width) / 2 + dp(6), self.height) \
+				if root.mode == "center" else \
+				((self.width - root.action_button.width * 2 - dp(6)), self.height)) \
+				if root.type == "bottom" else (0, 0)
+			radius: (root.round, 0, 0, 0) if root.mode == "center" else (0, root.round, 0, 0)
+		Color:
+			rgba: 1, 1, 1, 1
+		Ellipse:
+			pos:
+				(self.center[0] - root.action_button.width / 2 - dp(6), self.center[1] - root._shift * 2) \
+				if root.mode == "center" else \
+				(self.width - root.action_button.width * 2 - dp(6), self.center[1] - root._shift * 2)
+			size:
+				(root.action_button.width + dp(6) * 2, root.action_button.width) \
+				if root.type == "bottom" else (0, 0)
+			angle_start: root._angle_start
+			angle_end: root._angle_end
+
+	BoxLayout:
+		id: left_actions
+		orientation: 'horizontal'
+		size_hint_x: None
+		padding: [0, (self.height - dp(48))/2]
+
+	BoxLayout:
+		padding: dp(12), 0
+
+		MDIconButton:
+			icon: "language-python"
+			pos_hint: {"center_x": .5, "center_y": .5}
+
+		MDLabel:
+			id: label_title
+			font_style: 'H3'
+			opposite_colors: root.opposite_colors
+			theme_text_color: 'Custom'
+			text_color: root.specific_text_color
+			text: root.title
+			shorten: True
+			shorten_from: 'right'
+			halign: root.anchor_title
+
+	BoxLayout:
+		id: right_actions
+		orientation: 'horizontal'
+		size_hint_x: None
+		padding: [0, (self.height - dp(48)) / 2]
