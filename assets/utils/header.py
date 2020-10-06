@@ -9,6 +9,7 @@ from kivy.properties import (
     StringProperty,
     NumericProperty,
     OptionProperty,
+    ObjectProperty
 )
 from kivy.core.window import Window
 from kivy.clock import Clock
@@ -268,6 +269,10 @@ class HeaderWithIcon(
     SpecificBackgroundColorBehavior,
     BoxLayout,
 ):
+
+
+    screen = ObjectProperty()
+
     """
     :Events:
         `on_action_button`

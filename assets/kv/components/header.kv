@@ -142,8 +142,15 @@
 		padding: dp(12), 0
 
 		MDIconButton:
-			icon: "language-python"
+			icon: "arrow-left-bold-box"
+			user_font_size: "40sp"
 			pos_hint: {"center_x": .5, "center_y": .5}
+			theme_text_color: "Custom"
+			text_color: 1,1,1,1
+			on_release: 
+				root.screen.manager.transition.direction = 'right' 
+				root.screen.manager.current = 'home_screen'
+
 
 		MDLabel:
 			id: label_title
