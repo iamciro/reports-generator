@@ -184,7 +184,23 @@
 							size_hint: 1,None
 							height: 100
 		BoxLayout:
+			orientation: 'vertical'
 			size_hint: 1,.5
+			padding: 20
+			#canvas:
+				#Color:
+					#rgba: 1, 0, 1, 1
+				#Rectangle:
+					#id: rect
+					#pos: self.pos
+					#size: self.size
+			MDRaisedButton:
+				text: 'Generar reporte'
+				size: 300, 100
+				halign: 'center'
+				pos_hint: {"center_x": .5, "center_y": .5}
+				font_size: 30
+				md_bg_color: txt.BUTTON_BG_COLOR
 			
 ScreenManager:
 	HomeScreen

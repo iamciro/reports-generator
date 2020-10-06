@@ -17,7 +17,7 @@ header = {
 # HomeScreen TEXTS
 home_screen = {
 	"welcome_text": '¡Bienvenido!',
-	"reportscreen_btn_text": 'Generar reporte'
+	"reportscreen_btn_text": 'Realizar reporte'
 }
 
 # ReportScreen TEXCS
