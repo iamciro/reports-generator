@@ -6,9 +6,14 @@ from kivymd.app import MDApp
 
 from assets.utils import texts as txt
 
+from datetime import datetime
+
 class ReportScreen(Screen):
+
+	date_time = datetime.now()
+
 	service_order_number = "2020-111100"
-	service_date = "02/02/2020"
+	service_datetime = date_time.strftime("%d/%m/%Y, %H:%M:%S")
 
 class HomeScreen(Screen):
 	pass
