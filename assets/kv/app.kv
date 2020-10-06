@@ -1,5 +1,8 @@
 #:include assets/kv/components/header.kv
-#:import txt assets.utils.texts 
+#:include assets/kv/utils/utils.kv
+#:import txt assets.utils.texts
+
+#:set textinput_fz 25
 
 <HomeScreen>:
 	name: 'home_screen'
@@ -30,6 +33,97 @@
 					root.manager.transition.direction = 'left'   
 					root.manager.current = "report_screen"
 
+<RSClientSection@BoxLayout>:
+	size_hint: .8, .4
+	pos_hint: {"center_x": .5, "center_y": .5}
+
+	GridLayout:
+		cols: 2
+		size_hint: 1,1
+		spacing: 20
+		padding: 30
+		BoxLayout:
+			orientation: 'vertical'
+			spacing: 8
+			ClientsLabel:
+				text: txt.report_screen['client_name']
+			MDTextField:
+				hint_text: ""
+				font_size: textinput_fz
+		BoxLayout:
+			orientation: 'vertical'
+			ClientsLabel:
+				text: txt.report_screen['client_phone_number']
+			MDTextField:
+				hint_text: ""
+				font_size: textinput_fz
+
+<RSDeviceSection@BoxLayout>:
+	size_hint: 1, .4
+	pos_hint: {"center_x": .5, "center_y": .1}
+	spacing: 8
+
+	GridLayout:
+		cols: 3
+		size_hint: 1,1
+		spacing: 10
+		padding: 50
+		BoxLayout:
+			orientation: 'vertical'
+			ClientsLabel:
+				text: txt.report_screen['device']
+			MDTextField:
+				hint_text: ""
+				font_size: textinput_fz
+		BoxLayout:
+			orientation: 'vertical'
+			ClientsLabel:
+				text: txt.report_screen['company']
+			MDTextField:
+				hint_text: ""
+				font_size: textinput_fz
+		BoxLayout:
+			orientation: 'vertical'
+			ClientsLabel:
+				text: txt.report_screen['model']
+			MDTextField:
+				hint_text: ""
+				font_size: textinput_fz
+
+<RSReportProblemSection@BoxLayout>:
+	size_hint: .8, .4
+	pos_hint: {"center_x": .5, "center_y": .5}
+
+	GridLayout:
+		cols: 2
+		size_hint: 1,1
+		pos_hint: {"center_x": .5, "y": 0}
+		BoxLayout:
+			orientation: 'vertical'
+			spacing: 30
+			MDLabel:
+				bold: True
+				text: txt.report_screen['reported_problem']
+				font_size: 21
+				halign: 'center'
+			BoxLayout:
+				id: box_layout
+				#canvas:
+					#Color:
+						#rgba: 0, 1, 1, 1
+					#Rectangle:
+						#id: rect
+						#pos: self.pos
+						#size: self.size
+				pos_hint: {"center_x": .5}
+				size_hint_x: .7
+				size_hint_y: None
+				TextInput:
+					padding: 10
+					font_size: textinput_fz
+					size_hint: 1,None
+					height: 100
+
 <ReportScreen>:
 	name: 'report_screen'
 	id: report_screen
@@ -55,134 +149,20 @@
 			GridLayout:
 				cols: 2
 				size_hint: 1,1
-				MDLabel:
+				ServicesLabel:
 					text: txt.report_screen['service_order'] + root.service_order_number
-					halign: 'center'
-					font_style: 'H6'
-				MDLabel:
+				ServicesLabel:
 					text: txt.report_screen['service_datetime'] + root.service_datetime
-					halign: 'center'
-					font_style: 'H6'
-		#Client info
-		BoxLayout:
-			size_hint: .8, .4
-			pos_hint: {"center_x": .5, "center_y": .5}
-			#canvas:
-				#Color:
-					#rgba: 1, 0, 1, 1
-				#Rectangle:
-					#id: rect
-					#pos: self.pos
-					#size: self.size
-			GridLayout:
-				cols: 2
-				size_hint: 1,1
-				spacing: 20
-				padding: 30
-				BoxLayout:
-					orientation: 'vertical'
-					spacing: 8
-					MDLabel:
-						bold: True
-						text: txt.report_screen['client_name']
-						font_size: 21
-					MDTextField:
-						hint_text: ""
-						font_size: 25
-				BoxLayout:
-					orientation: 'vertical'
-					MDLabel:
-						bold: True
-						text: txt.report_screen['client_phone_number']
-						font_size: 21
-					MDTextField:
-						hint_text: ""
-						font_size: 25
 
-		# Dispositive info
-		BoxLayout:
-			size_hint: 1, .4
-			pos_hint: {"center_x": .5, "center_y": .1}
-			spacing: 8
-			#canvas:
-				#Color:
-					#rgba: 1, 1, 0, 1
-				#Rectangle:
-					#id: rect
-					#pos: self.pos
-					#size: self.size
-			GridLayout:
-				cols: 3
-				size_hint: 1,1
-				spacing: 10
-				padding: 50
-				BoxLayout:
-					orientation: 'vertical'
-					MDLabel:
-						bold: True
-						text: txt.report_screen['device']
-						font_size: 21
-					MDTextField:
-						hint_text: ""
-						font_size: 25
-				BoxLayout:
-					orientation: 'vertical'
-					MDLabel:
-						bold: True
-						text: txt.report_screen['company']
-						font_size: 21
-					MDTextField:
-						hint_text: ""
-						font_size: 25
-				BoxLayout:
-					orientation: 'vertical'
-					MDLabel:
-						bold: True
-						text: txt.report_screen['model']
-						font_size: 21
-					MDTextField:
-						hint_text: ""
-						font_size: 25
+		# Client Section
+		RSClientSection:
 
-		BoxLayout:
-			size_hint: .8, .4
-			pos_hint: {"center_x": .5, "center_y": .5}
-			#canvas:
-				#Color:
-					#rgba: 1, 0, 1, 1
-				#Rectangle:
-					#id: rect
-					#pos: self.pos
-					#size: self.size
-			GridLayout:
-				cols: 2
-				size_hint: 1,1
-				pos_hint: {"center_x": .5, "y": 0}
-				BoxLayout:
-					orientation: 'vertical'
-					spacing: 30
-					MDLabel:
-						bold: True
-						text: txt.report_screen['reported_problem']
-						font_size: 21
-						halign: 'center'
-					BoxLayout:
-						id: box_layout
-						#canvas:
-							#Color:
-								#rgba: 0, 1, 1, 1
-							#Rectangle:
-								#id: rect
-								#pos: self.pos
-								#size: self.size
-						pos_hint: {"center_x": .5}
-						size_hint_x: .7
-						size_hint_y: None
-						TextInput:
-							padding: 10
-							font_size: 25
-							size_hint: 1,None
-							height: 100
+		# Device Section
+		RSDeviceSection:
+
+		# Report Problem Section
+		RSReportProblemSection:
+
 		BoxLayout:
 			orientation: 'vertical'
 			size_hint: 1,.5

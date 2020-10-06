@@ -1,11 +1,13 @@
+# KIVY
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 
+# KIVYMD
 from kivymd.app import MDApp
 
+# MODULES
 from assets.utils import texts as txt
-
 from datetime import datetime
 
 class ReportScreen(Screen):
