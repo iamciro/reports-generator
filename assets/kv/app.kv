@@ -56,11 +56,11 @@
 				cols: 2
 				size_hint: 1,1
 				MDLabel:
-					text: "Orden de servicio: " + root.service_order_number
+					text: txt.report_screen['service_order'] + root.service_order_number
 					halign: 'center'
 					font_style: 'H6'
 				MDLabel:
-					text: "Fecha de orden: " + root.service_datetime
+					text: txt.report_screen['service_datetime'] + root.service_datetime
 					halign: 'center'
 					font_style: 'H6'
 		#Client info
@@ -84,7 +84,7 @@
 					spacing: 8
 					MDLabel:
 						bold: True
-						text: "Nombre del cliente:"
+						text: txt.report_screen['client_name']
 						font_size: 21
 					MDTextField:
 						hint_text: ""
@@ -93,7 +93,7 @@
 					orientation: 'vertical'
 					MDLabel:
 						bold: True
-						text: "Teléfono:"
+						text: txt.report_screen['client_phone_number']
 						font_size: 21
 					MDTextField:
 						hint_text: ""
@@ -120,7 +120,7 @@
 					orientation: 'vertical'
 					MDLabel:
 						bold: True
-						text: "Dispositivo:"
+						text: txt.report_screen['device']
 						font_size: 21
 					MDTextField:
 						hint_text: ""
@@ -129,7 +129,7 @@
 					orientation: 'vertical'
 					MDLabel:
 						bold: True
-						text: "Marca:"
+						text: txt.report_screen['company']
 						font_size: 21
 					MDTextField:
 						hint_text: ""
@@ -138,7 +138,7 @@
 					orientation: 'vertical'
 					MDLabel:
 						bold: True
-						text: "Modelo:"
+						text: txt.report_screen['model']
 						font_size: 21
 					MDTextField:
 						hint_text: ""
@@ -163,7 +163,7 @@
 					spacing: 30
 					MDLabel:
 						bold: True
-						text: "Problema reportado:"
+						text: txt.report_screen['reported_problem']
 						font_size: 21
 						halign: 'center'
 					BoxLayout:
@@ -195,7 +195,7 @@
 					#pos: self.pos
 					#size: self.size
 			MDRaisedButton:
-				text: 'Generar reporte'
+				text: txt.report_screen['generate_report_btn_text']
 				size: 300, 100
 				halign: 'center'
 				pos_hint: {"center_x": .5, "center_y": .5}

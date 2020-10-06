@@ -22,5 +22,14 @@ home_screen = {
 
 # ReportScreen TEXCS
 report_screen = {
-	"test_text": 'Mensaje de prueba'
+	# MEJORAR ESTO
+	"service_order": 'Orden de servicio: ',
+	"service_datetime": 'Fecha de orden: ',
+	"client_name": 'Nombre del cliente',
+	"client_phone_number": 'Teléfono',
+	"device": 'Dispositivo',
+	"company": 'Marca',
+	"model": 'Modelo',
+	"reported_problem": 'Problema reportado',
+	"generate_report_btn_text": 'Generar reporte'
 }
