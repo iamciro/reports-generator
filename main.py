@@ -7,7 +7,8 @@ from kivymd.app import MDApp
 from assets.utils import texts as txt
 
 class ReportScreen(Screen):
-	pass
+	service_order_number = "2020-111100"
+	service_date = "02/02/2020"
 
 class HomeScreen(Screen):
 	pass
