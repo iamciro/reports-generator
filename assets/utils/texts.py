@@ -14,6 +14,7 @@ dialog = {
 	"INVALID_MESSAGES": {
 		"client_name": 'El campo "Nombre del cliente" es obligatorio',
 		"client_phone_number": 'El campo "Teléfono" es obligatorio',
+		"client_phone_number_invalid_format": 'No se puede ingresar letras en el campo "Teléfono"',
 		"device_type": 'El campo "Dispositivo" es obligatorio',
 		"device_company": 'El campo "Marca" es obligatorio',
 	}

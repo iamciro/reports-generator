@@ -51,7 +51,7 @@ class ReportScreen(Screen):
 			dialog_message = txt.dialog['INVALID_MESSAGES']['client_phone_number']
 		elif not re.search('[0-9]', data['client_phone_number']):
 			is_valid = False
-			dialog_message = 'No se pueden ingresar letras en el campo Teléfono'
+			dialog_message = txt.dialog['INVALID_MESSAGES']['client_phone_number_invalid_format']
 
 		elif len(data['device_type']) == 0:
 			is_valid = False
