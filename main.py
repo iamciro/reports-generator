@@ -30,17 +30,36 @@ class ReportScreen(Screen):
 	# Service's datetime
 	service_datetime = date_time.strftime("%d/%m/%Y, %H:%M:%S")
 
+	def validate_data(self, data):
+
+		right_data = True
+
+		if len(data['client_name']) == 0:
+			print("Llená el campo nombre")
+			right_data = False
+		elif len(data['client_phone_number']) == 0:
+			print("Llená el campo Teléfono")
+			right_data = False
+		elif len(data['device_type']) == 0:
+			print("Llená el campo Dispositivo")
+			right_data = False
+		elif len(data['device_company']) == 0:
+			print("Llená el campo Marca")
+			right_data = False
+
+		return right_data
+
 	def get_data(self):
 
 		# Service's order
-		service_order = self.service_order_number
+		service_order_number = self.service_order_number
 		# Service's datetime
 		service_datetime = self.service_datetime
 		
 		# Client's name
 		client_name = self.client_section.ids.client_name.text
 		# Client's phone number
-		client_phone = self.client_section.ids.client_phone_number.text
+		client_phone_number = self.client_section.ids.client_phone_number.text
 
 		# Device's type
 		device_type =  self.device_section.ids.device_type.text
@@ -52,7 +71,23 @@ class ReportScreen(Screen):
 		# Reported problem
 		reported_problem = self.reported_problem_section.ids.reported_problem.text
 
-		print(service_order, " .... ", service_datetime)
+		# Convert data to dictionary object
+		data = {
+			"client_name": client_name,
+			"client_phone_number": client_phone_number,
+			"device_type": device_type,
+			"device_company": device_company,
+			"device_model": device_model,
+			"reported_problem": reported_problem
+		}
+
+		# Validate data
+		validated_data = self.validate_data(data)
+
+		if validated_data:
+			print("Paso la validacion!!")
+		else:
+			print("No paso la validacion")
 
 class HomeScreen(Screen):
 	pass
