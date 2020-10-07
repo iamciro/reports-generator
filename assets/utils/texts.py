@@ -9,6 +9,16 @@ APP_TITLE = 'Tecno Services | Generación de reportes'
 HEADER_BG_COLOR = get_color_from_hex('3AB054')
 BUTTON_BG_COLOR = get_color_from_hex('3AB054')
 
+dialog = {
+	"OK_BTN_TEXT": "Aceptar",
+	"INVALID_MESSAGES": {
+		"client_name": 'El campo "Nombre del cliente" es obligatorio',
+		"client_phone_number": 'El campo "Teléfono" es obligatorio',
+		"device_type": 'El campo "Dispositivo" es obligatorio',
+		"device_company": 'El campo "Marca" es obligatorio',
+	}
+}
+
 # HEADER TEXTS
 header = {
 	"title": 'Tecno Services'

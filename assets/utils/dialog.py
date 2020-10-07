@@ -3,7 +3,7 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
 
 # ASSETS
-#from assets import texts as txt
+from .texts import dialog
 
 # Class to open and close dialog
 class Dialog:
@@ -16,7 +16,7 @@ class Dialog:
 			title=message,
 			buttons=[
 				MDFlatButton(
-						text="Aceptar",
+						text=dialog['OK_BTN_TEXT'],
 						on_press=self.close
 				)
 			],

@@ -38,22 +38,23 @@ class ReportScreen(Screen):
 
 	def validate_data(self, data):
 
-		right_data = True
+		is_valid = True
+		dialog_message = ''
 
 		if len(data['client_name']) == 0:
-			print("Llená el campo nombre")
-			right_data = False
+			is_valid = False
+			dialog_message = txt.dialog['INVALID_MESSAGES']['client_name']
 		elif len(data['client_phone_number']) == 0:
-			print("Llená el campo Teléfono")
-			right_data = False
+			is_valid = False
+			dialog_message = txt.dialog['INVALID_MESSAGES']['client_phone_number']
 		elif len(data['device_type']) == 0:
-			print("Llená el campo Dispositivo")
-			right_data = False
+			is_valid = False
+			dialog_message = txt.dialog['INVALID_MESSAGES']['device_type']
 		elif len(data['device_company']) == 0:
-			print("Llená el campo Marca")
-			right_data = False
+			is_valid = False
+			dialog_message = txt.dialog['INVALID_MESSAGES']['device_company']
 
-		return right_data
+		return {"is_valid": is_valid, "dialog_message": dialog_message}
 
 	def get_data(self):
 
@@ -88,12 +89,12 @@ class ReportScreen(Screen):
 		}
 
 		# Validate data
-		validated_data = self.validate_data(data)
+		valid_data = self.validate_data(data)
 
-		if validated_data:
+		if valid_data['is_valid']:
 			self.dialog.open("Validacion valida")
 		else:
-			self.dialog.open("Validacion invalida")
+			self.dialog.open(valid_data['dialog_message'])
 
 class HomeScreen(Screen):
 	pass
