@@ -11,6 +11,7 @@ from kivymd.app import MDApp
 from assets.utils import texts as txt
 from assets.utils.dialog import Dialog
 from datetime import datetime
+import re
 
 class ReportScreen(Screen):
 
@@ -45,8 +46,13 @@ class ReportScreen(Screen):
 			is_valid = False
 			dialog_message = txt.dialog['INVALID_MESSAGES']['client_name']
 		elif len(data['client_phone_number']) == 0:
+			# Pattern DDDD-DDDD
 			is_valid = False
 			dialog_message = txt.dialog['INVALID_MESSAGES']['client_phone_number']
+		elif not re.search('[0-9]', data['client_phone_number']):
+			is_valid = False
+			dialog_message = 'No se pueden ingresar letras en el campo Teléfono'
+
 		elif len(data['device_type']) == 0:
 			is_valid = False
 			dialog_message = txt.dialog['INVALID_MESSAGES']['device_type']
