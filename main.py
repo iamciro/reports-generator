@@ -9,6 +9,7 @@ from kivymd.app import MDApp
 
 # MODULES
 from assets.utils import texts as txt
+from assets.utils.dialog import Dialog
 from datetime import datetime
 
 class ReportScreen(Screen):
@@ -27,8 +28,13 @@ class ReportScreen(Screen):
 
 	# Service's order number
 	service_order_number = "2020-111100"
+
 	# Service's datetime
 	service_datetime = date_time.strftime("%d/%m/%Y, %H:%M:%S")
+
+	def __init__(self, **kwargs): 
+		super(ReportScreen, self).__init__(**kwargs)
+		self.dialog = Dialog()
 
 	def validate_data(self, data):
 
@@ -85,9 +91,9 @@ class ReportScreen(Screen):
 		validated_data = self.validate_data(data)
 
 		if validated_data:
-			print("Paso la validacion!!")
+			self.dialog.open("Validacion valida")
 		else:
-			print("No paso la validacion")
+			self.dialog.open("Validacion invalida")
 
 class HomeScreen(Screen):
 	pass
