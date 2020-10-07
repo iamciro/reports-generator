@@ -48,6 +48,7 @@
 			ClientsLabel:
 				text: txt.report_screen['client_name']
 			MDTextField:
+				id: client_name
 				hint_text: ""
 				font_size: textinput_fz
 		BoxLayout:
@@ -55,6 +56,7 @@
 			ClientsLabel:
 				text: txt.report_screen['client_phone_number']
 			MDTextField:
+				id: client_phone_number
 				hint_text: ""
 				font_size: textinput_fz
 
@@ -73,6 +75,7 @@
 			ClientsLabel:
 				text: txt.report_screen['device']
 			MDTextField:
+				id: device_type
 				hint_text: ""
 				font_size: textinput_fz
 		BoxLayout:
@@ -80,6 +83,7 @@
 			ClientsLabel:
 				text: txt.report_screen['company']
 			MDTextField:
+				id: device_company
 				hint_text: ""
 				font_size: textinput_fz
 		BoxLayout:
@@ -87,6 +91,7 @@
 			ClientsLabel:
 				text: txt.report_screen['model']
 			MDTextField:
+				id: device_model
 				hint_text: ""
 				font_size: textinput_fz
 
@@ -119,6 +124,7 @@
 				size_hint_x: .7
 				size_hint_y: None
 				TextInput:
+					id: reported_problem
 					padding: 10
 					font_size: textinput_fz
 					size_hint: 1,None
@@ -127,6 +133,13 @@
 <ReportScreen>:
 	name: 'report_screen'
 	id: report_screen
+
+	report_screen: report_screen
+
+	client_section: client_section
+	device_section: device_section
+	reported_problem_section: reported_problem_section
+
 	BoxLayout:
 		orientation: 'vertical'
 		HeaderWithIcon:
@@ -150,18 +163,23 @@
 				cols: 2
 				size_hint: 1,1
 				ServicesLabel:
+					id: service_order
 					text: txt.report_screen['service_order'] + root.service_order_number
 				ServicesLabel:
+					id: service_datetime
 					text: txt.report_screen['service_datetime'] + root.service_datetime
 
 		# Client Section
 		RSClientSection:
+			id: client_section
 
 		# Device Section
 		RSDeviceSection:
+			id: device_section
 
 		# Report Problem Section
 		RSReportProblemSection:
+			id: reported_problem_section
 
 		BoxLayout:
 			orientation: 'vertical'
@@ -181,6 +199,7 @@
 				pos_hint: {"center_x": .5, "center_y": .5}
 				font_size: 30
 				md_bg_color: txt.BUTTON_BG_COLOR
+				on_press: report_screen.get_data()
 			
 ScreenManager:
 	HomeScreen
