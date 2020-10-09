@@ -20,6 +20,20 @@ dialog = {
 	}
 }
 
+pdf = {
+	"title": "Tecno Services",
+	"service_order_number": 'Número de orden: ',
+	"service_datetime": 'Fecha de orden: ',	
+	"client_name": 'Nombre del cliente: ',
+	"client_phone_number": 'Teléfono: ',
+	"device_type": "Dipositivo: ",
+	"device_company": "Marca: ",
+	"device_model": "Modelo: ",
+	"reported_problem": "Problema reportado: ",
+	"repair_date": "Fecha probable de reparación: ",
+	"client_firm": "Firma del cliente: "
+}
+
 # HEADER TEXTS
 header = {
 	"title": 'Tecno Services'
