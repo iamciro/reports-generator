@@ -10,6 +10,7 @@ from kivymd.app import MDApp
 # MODULES
 from assets.utils import texts as txt
 from assets.utils.dialog import Dialog
+from assets.utils.pdf import PDF
 from datetime import datetime
 import re
 
@@ -98,7 +99,22 @@ class ReportScreen(Screen):
 		valid_data = self.validate_data(data)
 
 		if valid_data['is_valid']:
-			self.dialog.open("Validacion valida")
+			# Generate PDF
+			# Init pdf
+			pdf = PDF('L', 'mm', 'A4')
+
+			offset = pdf.service_info_section()
+
+			pdf.client_info_section()
+
+			pdf.device_info_section()
+
+			pdf.problem_info_section()
+
+			pdf.date_client_firm_section()
+
+			# Generate PDF
+			pdf.output('pdf/example3.pdf', 'F')
 		else:
 			self.dialog.open(valid_data['dialog_message'])
 
