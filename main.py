@@ -103,13 +103,13 @@ class ReportScreen(Screen):
 			# Init pdf
 			pdf = PDF('L', 'mm', 'A4')
 
-			offset = pdf.service_info_section()
+			offset = pdf.service_info_section(service_order_number, service_datetime)
 
-			pdf.client_info_section()
+			pdf.client_info_section(client_name, client_phone_number)
 
-			pdf.device_info_section()
+			pdf.device_info_section(device_type, device_company, device_model)
 
-			pdf.problem_info_section()
+			pdf.problem_info_section(reported_problem)
 
 			pdf.date_client_firm_section()
 
