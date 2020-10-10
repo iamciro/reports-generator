@@ -11,8 +11,11 @@ from kivymd.app import MDApp
 from assets.utils import texts as txt
 from assets.utils.dialog import Dialog
 from assets.utils.pdf import PDF
+
 from datetime import datetime
 import re
+import os
+import webbrowser
 
 class ReportScreen(Screen):
 
@@ -33,6 +36,9 @@ class ReportScreen(Screen):
 
 	# Service's datetime
 	service_datetime = date_time.strftime("%d/%m/%Y, %H:%M:%S")
+
+	# PDF flag
+	pdf_generated = False
 
 	def __init__(self, **kwargs): 
 		super(ReportScreen, self).__init__(**kwargs)
@@ -99,22 +105,42 @@ class ReportScreen(Screen):
 		valid_data = self.validate_data(data)
 
 		if valid_data['is_valid']:
-			# Generate PDF
-			# Init pdf
-			pdf = PDF('L', 'mm', 'A4')
+			
+			# Try PDF generation
+			try:
+				# Generate PDF
+				
+				# Init pdf
+				pdf = PDF('L', 'mm', 'A4')
 
-			offset = pdf.service_info_section(service_order_number, service_datetime)
+				offset = pdf.service_info_section(service_order_number, service_datetime)
 
-			pdf.client_info_section(client_name, client_phone_number)
+				pdf.client_info_section(client_name, client_phone_number)
 
-			pdf.device_info_section(device_type, device_company, device_model)
+				pdf.device_info_section(device_type, device_company, device_model)
 
-			pdf.problem_info_section(reported_problem)
+				pdf.problem_info_section(reported_problem)
 
-			pdf.date_client_firm_section()
+				pdf.date_client_firm_section()
 
-			# Generate PDF
-			pdf.output('pdf/example3.pdf', 'F')
+				# Generate PDF
+				pdf.output('pdf/example3.pdf', 'F')
+
+				# Successfully generated PDF
+				self.pdf_generated = True
+			except Exception as e:
+				# Unexpected error
+				self.dialog.open('Error: ' + e)
+
+
+			if self.pdf_generated:
+				# if PDF file was successfully generated
+
+				# Open file
+				webbrowser.open_new(r'pdf/example3.pdf')
+				# Open a success dialog
+				self.dialog.open('¡PDF generado con éxito!')
+
 		else:
 			self.dialog.open(valid_data['dialog_message'])
 
