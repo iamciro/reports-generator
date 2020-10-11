@@ -1,5 +1,6 @@
 #:include assets/kv/components/header.kv
 #:include assets/kv/utils/utils.kv
+#:import RSServiceSection assets.utils.service_section
 #:import txt assets.utils.texts
 
 #:set textinput_fz 25
@@ -130,12 +131,23 @@
 					size_hint: 1,None
 					height: 100
 
+<RSServiceSection>:
+	size_hint: 1, .2
+	pos_hint: {"center_x": .5, "center_y": .5}
+	ServicesLabel:
+		id: service_order
+		text: txt.report_screen['service_order'] + root.service_order_number
+	ServicesLabel:
+		id: service_datetime
+		text: txt.report_screen['service_datetime'] + root.service_datetime
+
 <ReportScreen>:
 	name: 'report_screen'
 	id: report_screen
 
 	report_screen: report_screen
 
+	service_section: service_section
 	client_section: client_section
 	device_section: device_section
 	reported_problem_section: reported_problem_section
@@ -149,25 +161,11 @@
 			size_hint_y: .2
 			md_bg_color: txt.HEADER_BG_COLOR
 			screen: root
-		BoxLayout:
-			size_hint: .8, .3
-			pos_hint: {"center_x": .5, "center_y": .5}
-			#canvas:
-				#Color:
-					#rgba: 1, 0, 1, 1
-				#Rectangle:
-					#id: rect
-					#pos: self.pos
-					#size: self.size
-			GridLayout:
-				cols: 2
-				size_hint: 1,1
-				ServicesLabel:
-					id: service_order
-					text: txt.report_screen['service_order'] + root.service_order_number
-				ServicesLabel:
-					id: service_datetime
-					text: txt.report_screen['service_datetime'] + root.service_datetime
+
+		RSServiceSection:
+			id: service_section
+			service_order_number: root.service_order_number
+			service_datetime: root.service_datetime
 
 		# Client Section
 		RSClientSection:
@@ -185,13 +183,7 @@
 			orientation: 'vertical'
 			size_hint: 1,.5
 			padding: 20
-			#canvas:
-				#Color:
-					#rgba: 1, 0, 1, 1
-				#Rectangle:
-					#id: rect
-					#pos: self.pos
-					#size: self.size
+
 			MDRaisedButton:
 				text: txt.report_screen['generate_report_btn_text']
 				size: 300, 100
