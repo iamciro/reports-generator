@@ -50,6 +50,7 @@ class ReportScreen(Screen):
 	service_datetime = date_time.strftime("%d/%m/%Y, %H:%M:%S")
 
 	# PDF flag
+	pdf_filename = ''
 	pdf_generated = False
 
 	def __init__(self, **kwargs): 
@@ -196,8 +197,10 @@ class ReportScreen(Screen):
 				# Draw date_client_firm_section
 				pdf.date_client_firm_section()
 
+				self.pdf_filename = "pdf/" + self.service_order_number + ".pdf"
+
 				# Generate PDF
-				pdf.output('pdf/example3.pdf', 'F')
+				pdf.output(self.pdf_filename, 'F')
 
 				# Successfully generated PDF
 				self.pdf_generated = True
@@ -216,7 +219,7 @@ class ReportScreen(Screen):
 			if self.pdf_generated:
 
 				# Open PDF file
-				webbrowser.open_new(r'pdf/example3.pdf')
+				webbrowser.open_new(self.pdf_filename)
 
 				# Open a success dialog
 				self.dialog.open('¡PDF generado con éxito!')
