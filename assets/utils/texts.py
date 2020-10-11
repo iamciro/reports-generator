@@ -48,6 +48,8 @@ home_screen = {
 # ReportScreen TEXCS
 report_screen = {
 	# MEJORAR ESTO
+	"order_number_A":1000,
+	"order_number_B":9999,
 	"service_order": 'Orden de servicio: ',
 	"service_datetime": 'Fecha de orden: ',
 	"client_name": 'Nombre del cliente',

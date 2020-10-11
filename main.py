@@ -17,6 +17,7 @@ from datetime import datetime
 import re
 import os
 import webbrowser
+import random
 
 class ReportScreen(Screen):
 
@@ -41,7 +42,9 @@ class ReportScreen(Screen):
 	date_time = datetime.now()
 
 	# Service's order number
-	service_order_number = "2020-111100"
+	random_number = str(random.randint(txt.report_screen['order_number_A'], txt.report_screen['order_number_B']) + random.randint(txt.report_screen['order_number_A'], txt.report_screen['order_number_B']))
+	order_number = date_time.strftime("%Y-") + random_number
+	service_order_number = order_number
 
 	# Service's datetime
 	service_datetime = date_time.strftime("%d/%m/%Y, %H:%M:%S")
@@ -118,11 +121,14 @@ class ReportScreen(Screen):
 			with new service_order_number and service_datetime values. 
 		'''
 
-		# Service's order number
-		self.service_order_number = "2020-cccccc"
-
 		# Today's datetime
 		self.date_time = datetime.now()
+
+		# Service's order number
+		self.random_number = str(random.randint(txt.report_screen['order_number_A'], txt.report_screen['order_number_B']) + random.randint(txt.report_screen['order_number_A'], txt.report_screen['order_number_B']))
+		self.order_number = self.date_time.strftime("%Y-") + self.random_number
+		self.service_order_number = self.order_number
+
 		# Service's datetime
 		self.service_datetime = self.date_time.strftime("%d/%m/%Y, %H:%M:%S")
 
